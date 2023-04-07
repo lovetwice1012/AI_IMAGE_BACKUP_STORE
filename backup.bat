@@ -1,4 +1,4 @@
 git add -A
 git commit -m "Backup"
-git push -u origin main
+git push -u origin master
 pause
