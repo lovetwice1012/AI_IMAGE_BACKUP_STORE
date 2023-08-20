@@ -1,5 +1,5 @@
 const fs = require("fs");
-
+const { execSync } = require('child_process')
 const readdirRecursively = (dir, files = []) => {
     const dirents = fs.readdirSync(dir, { withFileTypes: true });
     const dirs = [];
@@ -14,16 +14,8 @@ const readdirRecursively = (dir, files = []) => {
 };
 var list = readdirRecursively("./")
 console.log(list);
-
+i = 0;
 for (var value of list) {
-    const { exec } = require('child_process')
-
-    exec('git update-index --assume-unchanged ' + value, (err, stdout, stderr) => {
-        if (err) {
-            console.log(`stderr: ${stderr}`)
-            return
-        }
-        console.log(`stdout: ${stdout}`)
-    }
-    )
+    i++
+    console.log(`[${i}/${list.length}] stdout: ${execSync('git update-index --assume-unchanged ' + value)}`)
 }
