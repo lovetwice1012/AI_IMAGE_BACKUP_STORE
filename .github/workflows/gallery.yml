@@ -36,6 +36,10 @@ jobs:
           persist-credentials: false
       - name: Build Gallery 🔧
         run: docker run -v "$(pwd):/work" ghcr.io/thumbsup/thumbsup /bin/sh -c "cd /work/ && thumbsup --config config.json"
+      - name: change owner (some files owner is root)
+        run: sudo chown -R runner:docker /home/runner/work/build_output
+      - name: change permission
+        run: sudo chmod +755 -r /home/runner/work/build_output
       - name: Package and upload artifact 📦
         uses: actions/upload-pages-artifact@v1.0.7
         with:
