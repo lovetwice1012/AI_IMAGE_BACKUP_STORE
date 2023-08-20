@@ -26,6 +26,10 @@ jobs:
           remove-android: 'true'
           remove-haskell: 'true'
           remove-codeql: 'true'
+      - name: Check free space
+        run: |
+          echo "Free space:"
+          df -h
       - name: Checkout 🛎️
         uses: actions/checkout@v3
         with:
