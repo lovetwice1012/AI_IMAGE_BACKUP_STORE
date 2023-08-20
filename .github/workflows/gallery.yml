@@ -16,6 +16,12 @@ jobs:
     if: ${{ github.repository != 'gautamkrishnar/github-pages-gallery' && github.event.head_commit.message != '' && github.event.head_commit.message != 'Initial commit' }}
     runs-on: ubuntu-latest
     steps:
+      - name: Maximize build space
+        uses: easimon/maximize-build-space@master
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 512
+          remove-dotnet: 'true'
       - name: Checkout 🛎️
         uses: actions/checkout@v3
         with:
