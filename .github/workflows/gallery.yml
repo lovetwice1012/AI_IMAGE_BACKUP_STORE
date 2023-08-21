@@ -33,6 +33,7 @@ jobs:
         with:
           artifact_name: gh-pages
           token: ${{ secrets.GITHUB_TOKEN }}
+          timeout: 2880
       - name: Delete artifact 🗑️
         uses: geekyeggo/delete-artifact@v2
         with:
