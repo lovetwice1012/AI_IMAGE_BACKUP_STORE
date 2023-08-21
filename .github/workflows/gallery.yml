@@ -14,7 +14,7 @@ jobs:
   test:
     name: Publish Gallery to Github Pages
     if: ${{ github.repository != 'gautamkrishnar/github-pages-gallery' && github.event.head_commit.message != '' && github.event.head_commit.message != 'Initial commit' }}
-    runs-on: ubuntu-latest
+    runs-on: buildjet-32vcpu-ubuntu-2204
     steps:
       - name: Maximize build space
         uses: easimon/maximize-build-space@master
@@ -37,9 +37,9 @@ jobs:
       - name: Build Gallery 🔧
         run: docker run -v "$(pwd):/work" ghcr.io/thumbsup/thumbsup /bin/sh -c "cd /work/ && thumbsup --config config.json"
       - name: change owner (some files owner is root)
-        run: sudo chown -R runner:docker /home/runner/work/AI_IMAGE_BACKUP_STORE/AI_IMAGE_BACKUP_STORE/build_output
+        run: sudo chown -R runner:docker /home/ubuntu/work/AI_IMAGE_BACKUP_STORE/AI_IMAGE_BACKUP_STORE/build_output
       - name: change permission
-        run: sudo chmod -R +755 /home/runner/work/AI_IMAGE_BACKUP_STORE/AI_IMAGE_BACKUP_STORE/build_output
+        run: sudo chmod -R +755 /home/ubuntu/work/AI_IMAGE_BACKUP_STORE/AI_IMAGE_BACKUP_STORE/build_output
       - name: Package and upload artifact 📦
         uses: actions/upload-pages-artifact@v1.0.7
         with:
