@@ -1,5 +1,5 @@
 {
-  "input": "./txt2img-images",
+  "input": "./",
   "output": "./build_output",
   "title": "AI Photo Gallery",
   "sort-albums-by": "title",
