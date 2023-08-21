@@ -14,22 +14,8 @@ jobs:
   test:
     name: Publish Gallery to Github Pages
     if: ${{ github.repository != 'gautamkrishnar/github-pages-gallery' && github.event.head_commit.message != '' && github.event.head_commit.message != 'Initial commit' }}
-    runs-on: buildjet-32vcpu-ubuntu-2204
+    runs-on: self-hosted
     steps:
-      - name: Maximize build space
-        uses: easimon/maximize-build-space@master
-        with:
-          root-reserve-mb: 512
-          swap-size-mb: 512
-          overprovision-lvm: 'true'
-          remove-dotnet: 'true'
-          remove-android: 'true'
-          remove-haskell: 'true'
-          remove-codeql: 'true'
-      - name: Check free space
-        run: |
-          echo "Free space:"
-          df -h
       - name: Checkout 🛎️
         uses: actions/checkout@v3
         with:
