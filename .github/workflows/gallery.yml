@@ -2,10 +2,10 @@ name: Publish Gallery
 on:
   push:
     branches:
-      - master
+      - gh-pages
   pull_request:
     branches:
-      - master
+      - gh-pages
 permissions:
   contents: write
   id-token: write
